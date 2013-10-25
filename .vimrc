@@ -1,5 +1,8 @@
 let mapleader=","
+set autoread
+set encoding=utf-8
 
+set guifont=Menlo:h14
 "{{{ Auto Commands
 
 " Automatically cd into the directory that the file is in
@@ -62,6 +65,7 @@ set nocompatible
 
 " This shows what you are typing as a command.
 set showcmd
+set showmode
 
 " Folding
 set foldmethod=manual
@@ -69,7 +73,7 @@ set foldmethod=manual
 " Needed for Syntax Highlighting and stuff
 filetype on
 filetype plugin indent on
-syntax on
+syntax enable
 set grepprg=grep\ -nH\ $*
 
 " Set all whitespace to default to 4 columns and use space instead of tab
@@ -90,6 +94,11 @@ if has("autocmd")
 
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+  " fdoc is yaml
+  autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+  " md is markdown
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
 endif
 
 " Use english for spellchecking, but don't spellcheck by default
@@ -101,18 +110,22 @@ endif
 " Real men use gcc
 compiler gcc
 
+" Don't store swapfile in the current dir
+set directory-=.
+
 " Cool tab completion stuff
 set wildmenu
 set wildmode=list:longest,full
 
 " Enable mouse support in console
-set mouse=i
+set mouse=a
 
 " Got backspace?
 set backspace=2
 
 " Line Numbers
 set number
+set ruler
 
 " Ignoring case
 set ignorecase
@@ -129,14 +142,17 @@ set nohidden
 " Set off the other paren
 highlight MatchParen ctermbg=4
 
-" Look and Feel
 
-" Favorite Color Scheme
-colorscheme ron
+" yank and paste with the system clipboard
+set clipboard=unnamed
 
 "Status line gnarliness
 set laststatus=2
 set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
+
+" Show trailing whitespaces
+set list
+set listchars=tab:▸\ ,trail:▫
 " ---------------------------------------------------------
 
 
@@ -164,27 +180,7 @@ func! Paste_on_off()
    return
 endfunc
 
-
-" Todo List Mode
-function! TodoListMode()
-   e ~/.todo.otl
-   Calendar
-   wincmd l
-   set foldlevel=1
-   tabnew ~/.notes.txt
-   tabfirst
-   " or 'norm! zMzr'
-endfunction
-
-
-" Taglist configuration
-let Tlist_Use_Right_Window = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Use_SingleClick = 1
-let Tlist_Inc_Winwidth = 0
-
-"let g:Tex_DefaultTargetFormat = "pdf"
+let g:Tex_DefaultTargetFormat = "pdf"
 let g:Tex_ViewRule_pdf = "kpdf"
 " ---------------------------------------------------------
 
@@ -194,26 +190,16 @@ let g:Tex_ViewRule_pdf = "kpdf"
 " Open Url on this line with the browser \w
 map <Leader>w :call Browser ()<CR>
 
-" Open the Project Plugin <F2>
-nnoremap <silent> <F2> :Project<CR>
-
-" Open the Project Plugin
-nnoremap <silent> <Leader>pal  :Project .vimproject<CR>
-
-" TODO Mode
-nnoremap <silent> <Leader>todo :execute TodoListMode()<CR>
-
-" Open the TagList Plugin <F3>
-nnoremap <silent> <F3> :Tlist<CR>
-
 " Next Tab
-nnoremap <silent> <C-k> :tabnext<CR>
+noremap <silent> <C-k> <C-w>l
 
 " Previous Tab
-nnoremap <silent> <C-j> :tabprevious<CR>
+noremap <silent> <C-j> <C-w>h
 
 " New Tab
-nnoremap <silent> <C-t> :tabnew<CR>
+noremap <silent> <C-t> :tabnew<CR>
+noremap <silent> <Leader>k :tabprevious<CR>
+noremap <silent> <Leader>j :tabnext<CR>
 
 " Rotate Color Scheme <F8>
 nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
@@ -242,8 +228,8 @@ nnoremap <silent> <Home> i <Esc>r
 nnoremap <silent> <End> a <Esc>r
 
 " Create Blank Newlines and stay in Normal mode
-nnoremap <silent> zj o<Esc>
-nnoremap <silent> zk O<Esc>
+nnoremap <silent> <Leader>o o<Esc>
+nnoremap <silent> <Leader>O O<Esc>
 
 " Space will toggle folds!
 nnoremap <space> za
@@ -253,24 +239,26 @@ nnoremap <space> za
 map N Nzz
 map n nzz
 
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
-inoremap <expr> <c-n> pumvisible() ? "\<lt>c-n>" : "\<lt>c-n>\<lt>c-r>=pumvisible() ? \"\\<lt>down>\" : \"\"\<lt>cr>"
-inoremap <expr> <m-;> pumvisible() ? "\<lt>c-n>" : "\<lt>c-x>\<lt>c-o>\<lt>c-n>\<lt>c-p>\<lt>c-r>=pumvisible() ? \"\\<lt>down>\" : \"\"\<lt>cr>"
-
 " Swap ; and :  Convenient.
 nnoremap ; :
 nnoremap : ;
 
 " re-map jj to esc
 inoremap jj <Esc>
-
 nnoremap JJJJ <Nop>
 
 " Fix email paragraphs
-nnoremap <leader>par :%s/^>$//<CR>
+nnoremap <Leader>par :%s/^>$//<CR>
 
+" Shortcut to rapidly toggle set list
+nnoremap <Leader>l :set list!<CR>
+
+nnoremap <Leader>R :w<CR>:!ruby %<CR>
 " Testing
 set completeopt=longest,menuone,preview
+
+" Reload .vimrc
+nnoremap <silent> <Leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " ---------------------------------------------------------
 
 
@@ -281,8 +269,20 @@ execute pathogen#infect()
 
 " Enable NERDtree
 autocmd vimenter * if !argc() | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
-" Shortcut to rapidly toggle set list
-nnoremap <leader>l :set list!<CR>
+" Set runtime path for ctrl-p
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+nnoremap <Leader>g :GitGutterToggle<CR>
+nnoremap <Leader>[ :TagbarToggle<CR>
+
+let g:ctrlp_match_window = 'order:ttb,max:20'
+let g:NERDSpaceDelims=1
+let g:gitgutter_enabled = 1
+
+
+" Color and background are here so we can use color installed by pathogen
+set background=light
+colorscheme solarized
 " ---------------------------------------------------------
