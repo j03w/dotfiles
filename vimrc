@@ -1,12 +1,8 @@
 let mapleader=","
 set autoread
 set encoding=utf-8
-
+set vb
 set guifont=Menlo:h14
-"{{{ Auto Commands
-
-" Automatically cd into the directory that the file is in
-autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -37,28 +33,8 @@ augroup JumpCursorOnEdit
             \ endif
 augroup END
 
-" Theme Rotating
-let themeindex=0
-function! RotateColorTheme()
-   let y = -1
-   while y == -1
-      let colorstring = "inkpot#ron#blue#elflord#evening#koehler#murphy#pablo#desert#torte#"
-      let x = match( colorstring, "#", g:themeindex )
-      let y = match( colorstring, "#", x + 1 )
-      let g:themeindex = x + 1
-      if y == -1
-         let g:themeindex = 0
-      else
-         let themestring = strpart(colorstring, x + 1, y - x - 1)
-         return ":colorscheme ".themestring
-      endif
-   endwhile
-endfunction
 
-"}}}
-
-
-"Misc Settings
+" Misc Settings
 " ---------------------------------------------------------
 " Necesary  for lots of cool vim things
 set nocompatible
@@ -69,6 +45,15 @@ set showmode
 
 " Folding
 set foldmethod=manual
+
+" let javaScript_fold=1         " JavaScript
+" let perl_fold=1               " Perl
+" let php_folding=1             " PHP
+" let r_syntax_folding=1        " R
+" let ruby_fold=1               " Ruby
+" let sh_fold_enabled=1         " sh
+" let vimsyn_folding='af'       " Vim script
+" let xml_syntax_folding=1      " XML
 
 " Needed for Syntax Highlighting and stuff
 filetype on
@@ -85,6 +70,8 @@ if has("autocmd")
   " Syntax of these languages is fussy over tabs Vs spaces
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType haml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
 
   " Customisations based on house-style (arbitrary)
   autocmd FileType html setlocal ts=4 sts=4 sw=4 noexpandtab
@@ -99,6 +86,8 @@ if has("autocmd")
   autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
   " md is markdown
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+  au BufNewFile,BufRead *.ejs so $HOME/.vim/bundle/jst.vim
 endif
 
 " Use english for spellchecking, but don't spellcheck by default
@@ -107,20 +96,17 @@ if version >= 700
    set nospell
 endif
 
-" Real men use gcc
-compiler gcc
-
 " Don't store swapfile in the current dir
 set directory-=.
 
-" Cool tab completion stuff
+" Tab completion
 set wildmenu
 set wildmode=list:longest,full
 
 " Enable mouse support in console
 set mouse=a
 
-" Got backspace?
+" Fix backspace
 set backspace=2
 
 " Line Numbers
@@ -130,13 +116,13 @@ set ruler
 " Ignoring case
 set ignorecase
 
-" Incremental searching is sexy
+" Incremental searching
 set incsearch
 
-" Highlight things that we find with the search
+" Highlight search
 set hlsearch
 
-" When I close a tab, remove the buffer
+" Clear buffer after removed a tab
 set nohidden
 
 " Set off the other paren
@@ -148,11 +134,15 @@ set clipboard=unnamed
 
 "Status line gnarliness
 set laststatus=2
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 " Show trailing whitespaces
 set list
 set listchars=tab:▸\ ,trail:▫
+
+" hint to keep lines short
+if exists('+colorcolumn')
+  set colorcolumn=120
+endif
 " ---------------------------------------------------------
 
 
@@ -191,18 +181,15 @@ let g:Tex_ViewRule_pdf = "kpdf"
 map <Leader>w :call Browser ()<CR>
 
 " Next Tab
-noremap <silent> <C-k> <C-w>l
+noremap <silent> <C-l> <C-w>l
 
 " Previous Tab
-noremap <silent> <C-j> <C-w>h
+noremap <silent> <C-h> <C-w>h
 
 " New Tab
 noremap <silent> <C-t> :tabnew<CR>
 noremap <silent> <Leader>k :tabprevious<CR>
 noremap <silent> <Leader>j :tabnext<CR>
-
-" Rotate Color Scheme <F8>
-nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
 
 " DOS is for fools.
 nnoremap <silent> <F9> :%s/$//g<CR>:%s// /g<CR>
@@ -243,10 +230,6 @@ map n nzz
 nnoremap ; :
 nnoremap : ;
 
-" re-map jj to esc
-inoremap jj <Esc>
-nnoremap JJJJ <Nop>
-
 " Fix email paragraphs
 nnoremap <Leader>par :%s/^>$//<CR>
 
@@ -261,7 +244,6 @@ set completeopt=longest,menuone,preview
 nnoremap <silent> <Leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " ---------------------------------------------------------
 
-
 " Plugins stuffs
 " ---------------------------------------------------------
 " Pathogen for Vim plugins
@@ -270,6 +252,7 @@ execute pathogen#infect()
 " Enable NERDtree
 autocmd vimenter * if !argc() | NERDTree | endif
 nnoremap <C-n> :NERDTreeToggle<CR>
+let NERDTreeChDirMode=0
 
 " Set runtime path for ctrl-p
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -283,6 +266,5 @@ let g:gitgutter_enabled = 1
 
 
 " Color and background are here so we can use color installed by pathogen
-set background=light
+ set background=light
 colorscheme solarized
-" ---------------------------------------------------------
