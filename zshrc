@@ -1,15 +1,13 @@
-eval "$(rbenv init - --no-rehash)"
+eval "$(rbenv init - zsh --no-rehash)"
 
-export PATH="/usr/local/heroku/bin:/usr/local/sbin:$PATH"
-export PGDATA="/usr/local/var/postgres"
-export PATH=${PATH}:/Developer/adt-bundle/sdk/platform-tools:/Developer/adt-bundle/sdk/tools
+ZSH=$HOME/.oh-my-zsh
 
-alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
-alias gb="git stash && git checkout master && git pull --rebase origin master && git pop && git reset --soft ."
+ZSH_THEME="joe"
+
 alias b='bundle exec'
 alias bi='bundle install'
-alias rs='bundle exec rails server'
-alias rc='bundle exec rails console'
+alias rsv='bundle exec rails server'
+alias rcs='bundle exec rails console'
 alias rmi='bundle exec rake db:migrate db:test:clone'
 alias ms='bundle exec middleman server'
 alias mb='bundle exec middleman build --no-clean'
@@ -19,3 +17,29 @@ alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias mongod_start="mongod --fork --logpath /usr/local/var/log/mongodb/mongo.log --logappend"
 alias gemimplode="for i in `gem list --no-versions`; do gem uninstall -aIx $i; done"
 alias erd_gen="bundle exec rake erd orientation=vertical inheritance=true notation=bachman polymorphism=true attributes=foreign_keys,primary_keys,inheritance,content indirect=true"
+
+DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+plugins=(git vi-mode)
+
+source $ZSH/oh-my-zsh.sh
+
+export PGDATA="/usr/local/var/postgres"
+export PATH="/usr/local/heroku/bin:/usr/local/sbin:$PATH"
+export PATH=${PATH}:/Developer/adt-bundle/sdk/platform-tools:/Developer/adt-bundle/sdk/tools
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export MANPATH="/usr/local/man:$MANPATH"
+
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"

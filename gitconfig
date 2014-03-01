@@ -1,0 +1,16 @@
+[color]
+    ui = auto
+[alias]
+    cm = commit --message
+    ca = commit --amend
+    co = checkout
+    po = push origin
+    tree = log --oneline --decorate --all --graph
+    b  = branch
+    st = status -sb
+    g = grep --break --heading --line-number
+    rs = reset --soft
+    pr = pull --rebase
+[grep]
+    lineNumber = true
+    extendRegexp = true

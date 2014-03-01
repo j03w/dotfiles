@@ -1,0 +1,8 @@
+*~
+.DS_Store
+.idea
+/www/.bundle
+*.
+.ruby-version
+/coverage
+chromedriver.log
