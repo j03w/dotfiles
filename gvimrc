@@ -7,5 +7,5 @@ set guioptions-=l
 set guioptions-=L
 set guioptions+=c
 
-colorscheme solarized
+colorscheme Tomorrow
 set background=light
