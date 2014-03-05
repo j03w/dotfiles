@@ -27,6 +27,7 @@ Bundle 'mxw/vim-jsx'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-ruby'
 Bundle 'tpope/vim-surround'
+Bundle 'godlygeek/tabular'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'tpope/vim-unimpaired'
 
@@ -161,7 +162,7 @@ endfunc
 " ---------------------------------------------------------
 "
 " Key Mappings
-map <Leader>w :call Browser ()<CR>                          " Open Url on this line with the browser \w
+" map <Leader>w :call Browser ()<CR>                          " Open Url on this line with the browser \w
 nnoremap <silent> <F10> :call Paste_on_off()<CR>
 set pastetoggle=<F10>
 nnoremap <silent> <F9> :%s/$//g<CR>:%s// /g<CR>             " for DOS apparently
@@ -205,8 +206,8 @@ nnoremap <Leader>par :%s/^>$//<CR>
 nnoremap <Leader>l :set list!<CR>
 
 nnoremap <Leader>R :w<CR>:!ruby %<CR>
-nnoremap <Leader>w :update<CR>
-nnoremap <Leader>W :update<CR> :bd<CR>
+" nnoremap <Leader>w :update<CR>
+" nnoremap <Leader>W :update<CR> :bd<CR>
 
 " Testing
 set completeopt=longest,menuone,preview
@@ -232,3 +233,11 @@ let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 1
 autocmd FileType eRuby setlocal sw=2 sts=2 ts=2 expandtab
+
+
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif

@@ -22,7 +22,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git vi-mode)
+plugins=(vi-mode git git-flow ruby rails)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,3 +43,9 @@ fi
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+
+# https://gist.github.com/nicholascloud/5372443#comment-815301
+function npmls() {
+    npm ls "$@" | grep "^[└├]" | sed "s/─┬/──/g"
+}
