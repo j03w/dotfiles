@@ -236,8 +236,6 @@ autocmd FileType eRuby setlocal sw=2 sts=2 ts=2 expandtab
 
 
 if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nnoremap <Leader>e :Tabularize /=<CR>
+  nnoremap <Leader>f :Tabularize /:\zs<CR>
 endif
