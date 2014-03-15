@@ -58,9 +58,9 @@ set laststatus=2
 set list
 set listchars=tab:▸\ ,trail:▫
 
-if exists('+colorcolumn')
-  set colorcolumn=120
-endif
+" if exists('+colorcolumn')
+"   set colorcolumn=120
+" endif
 
 if version >= 700
    set spl=en spell
@@ -68,9 +68,6 @@ if version >= 700
 endif
 
 colorscheme default
-if has('gui_running')
-
-endif
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 if has("autocmd")
