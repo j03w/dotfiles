@@ -21,6 +21,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'noahfrederick/vim-hemisu'
+Bundle 'tpope/vim-haml'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
@@ -57,10 +58,7 @@ set clipboard=unnamed
 set laststatus=2
 set list
 set listchars=tab:▸\ ,trail:▫
-
-" if exists('+colorcolumn')
-"   set colorcolumn=120
-" endif
+set vb t_vb=
 
 if version >= 700
    set spl=en spell
@@ -81,7 +79,6 @@ if has("autocmd")
   autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 
-  autocmd BufRead,BufNewFile *.scss set filetype=css
   autocmd BufNewFile,BufRead *.rss set filetype=xml
   autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
   autocmd BufRead,BufNewFile *.md set filetype=markdown
@@ -231,8 +228,5 @@ let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 1
 autocmd FileType eRuby setlocal sw=2 sts=2 ts=2 expandtab
 
-
-if exists(":Tabularize")
-  nnoremap <Leader>e :Tabularize /=<CR>
-  nnoremap <Leader>f :Tabularize /:\zs<CR>
-endif
+nnoremap <Leader>e :Tabularize /=<CR>
+nnoremap <Leader>f :Tabularize /:\zs<CR>
