@@ -6,30 +6,30 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'kien/ctrlp.vim'
-Bundle 'roman/golden-ratio'
-Bundle 'briancollins/vim-jst'
-Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/nuvola.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'bling/vim-airline'
-Bundle 'tpop/vim-bundler'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'bling/vim-airline'
+Bundle 'briancollins/vim-jst'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'godlygeek/tabular'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'lokaltog/vim-easymotion'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'mxw/vim-jsx'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'noahfrederick/vim-hemisu'
+Bundle 'pangloss/vim-javascript'
+Bundle 'roman/golden-ratio'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-endwise'
-Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'noahfrederick/vim-hemisu'
 Bundle 'tpope/vim-haml'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-ruby'
 Bundle 'tpope/vim-surround'
-Bundle 'godlygeek/tabular'
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'tpope/vim-unimpaired'
 
 filetype on
@@ -58,7 +58,6 @@ set clipboard=unnamed
 set laststatus=2
 set list
 set listchars=tab:▸\ ,trail:▫
-set vb t_vb=
 
 if version >= 700
    set spl=en spell
@@ -70,20 +69,14 @@ colorscheme default
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 if has("autocmd")
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType haml setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
-
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 
   autocmd BufNewFile,BufRead *.rss set filetype=xml
   autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.ejs so $HOME/.vim/bundle/jst.vim
 
-  au BufNewFile,BufRead *.ejs so $HOME/.vim/bundle/jst.vim
+  " Remove any trailing whitespace that is in the file
+  autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 endif
 
 if exists('$TMUX')
@@ -94,8 +87,7 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-" Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
 
 " Restore cursor position to where it was before
 augroup JumpCursorOnEdit
@@ -185,6 +177,9 @@ nnoremap <silent> <End> a <Esc>r
 nnoremap <silent> <Leader>o o<Esc>
 nnoremap <silent> <Leader>O O<Esc>
 
+
+nnoremap <silent> <Leader>c :noh
+
 nnoremap <space> za
 
 map N Nzz
@@ -227,6 +222,7 @@ let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 1
 autocmd FileType eRuby setlocal sw=2 sts=2 ts=2 expandtab
+
 
 nnoremap <Leader>e :Tabularize /=<CR>
 nnoremap <Leader>f :Tabularize /:\zs<CR>
