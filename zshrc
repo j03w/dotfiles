@@ -30,20 +30,8 @@ export PGDATA="/usr/local/var/postgres"
 export PATH="/usr/local/heroku/bin:/usr/local/sbin:$PATH"
 export PATH=${PATH}:/Developer/adt-bundle/sdk/platform-tools:/Developer/adt-bundle/sdk/tools
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
+export EDITOR='vim'
 
 # https://gist.github.com/nicholascloud/5372443#comment-815301
 function npmls() {
