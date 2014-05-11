@@ -1,29 +1,30 @@
 [color]
-    ui = always
-    branch = true
-    diff = true
-    pager = true
-    status = true
+  ui = always
+  branch = true
+  diff = true
+  pager = true
+  status = true
 [alias]
-    b  = branch
-  g = grep --break --heading --line-number
-  st = status -sb
-  ss = stash
-  sa = stash apply
-  sl = stash list
-  sd = stash drop
-  mt = mergetool
-  co = checkout
-  cm = commit -m
-  ca = commit --amend
-  d  = diff
-  dc = diff --cached
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset ·%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset · %C(bold blue)%an%Creset' --abbrev-commit --
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  b    = branch
+  g    = grep --break --heading --line-number
+  st   = status -sb
+  ss   = stash
+  sa   = stash apply
+  sl   = stash list
+  sd   = stash drop
+  mt   = mergetool
+  co   = checkout
+  cm   = commit -m
+  ca   = commit --amend
+  cam  = commit --amend -m
+  d    = diff --color-words --ignore-space-at-eol -b -w --ignore-blank-lines
+  dc   = diff --cached
+  lg   = log --color --graph --pretty                                        = format:'%Cred%h%Creset ·%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset · %C(bold blue)%an%Creset' --abbrev-commit --
+  lola = log --graph --decorate --pretty                                     = oneline --abbrev-commit --all
   tree = log --oneline --decorate --all --graph
-  po = push origin
-  pr = pull --rebase
-  rs = reset --soft
+  po   = push origin HEAD
+  pr   = pull --rebase
+  rs   = reset --soft
 [grep]
-    lineNumber = true
-    extendRegexp = true
+  lineNumber = true
+  extendRegexp = true
