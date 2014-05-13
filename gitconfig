@@ -19,8 +19,8 @@
   cam  = commit --amend -m
   d    = diff --color-words --ignore-space-at-eol -b -w --ignore-blank-lines
   dc   = diff --cached
-  lg   = log --color --graph --pretty                                        = format:'%Cred%h%Creset ·%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset · %C(bold blue)%an%Creset' --abbrev-commit --
-  lola = log --graph --decorate --pretty                                     = oneline --abbrev-commit --all
+  lg   = log --color --graph --pretty=format:'%Cred%h%Creset ·%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset · %C(bold blue)%an%Creset' --abbrev-commit --
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   tree = log --oneline --decorate --all --graph
   po   = push origin HEAD
   pr   = pull --rebase
