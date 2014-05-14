@@ -1,4 +1,4 @@
-set guifont=Bitstream_Vera_Sans_Mono:h14
+set guifont=Menlo:h12
 set guitablabel=%t
 set guioptions-=T
 set guioptions-=m
