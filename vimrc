@@ -69,6 +69,7 @@ colorscheme default
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 if has("autocmd")
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
   autocmd BufNewFile,BufRead *.rss set filetype=xml
   autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
@@ -159,8 +160,8 @@ noremap <silent> <C-h> <C-w>h
 noremap <silent> <C-k> <C-w>k
 noremap <silent> <C-j> <C-w>j
 noremap <silent> <C-t> :tabnew<CR>
-noremap <silent> <Leader>k :tabprevious<CR>
-noremap <silent> <Leader>j :tabnext<CR>
+noremap <silent> <Leader>j :tabprevious<CR>
+noremap <silent> <Leader>k :tabnext<CR>
 
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 nnoremap <silent> <Leader>gv :tabnew<CR>:e ~/.gvimrc<CR>
