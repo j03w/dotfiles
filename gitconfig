@@ -6,7 +6,7 @@
   status = true
 [alias]
   b    = branch
-  g    = grep --break --heading --line-number
+  g    = grep --break --heading --line-number --ignore-case -I -C 3
   st   = status -sb
   ss   = stash
   sa   = stash apply
