@@ -1,37 +1,38 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-Bundle 'airblade/vim-gitgutter'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'bling/vim-airline'
-Bundle 'briancollins/vim-jst'
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'godlygeek/tabular'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'lokaltog/vim-easymotion'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'mxw/vim-jsx'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'noahfrederick/vim-hemisu'
-Bundle 'pangloss/vim-javascript'
-Bundle 'roman/golden-ratio'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-ruby'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
+Plugin 'Yggdroot/indentLine'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'briancollins/vim-jst'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
+Plugin 'lokaltog/vim-easymotion'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'mxw/vim-jsx'
+Plugin 'noahfrederick/vim-hemisu'
+Plugin 'pangloss/vim-javascript'
+Plugin 'roman/golden-ratio'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-ruby/vim-ruby'
+
+call vundle#end()
 
 filetype on
 filetype plugin indent on
@@ -197,8 +198,8 @@ nnoremap <Leader>par :%s/^>$//<CR>
 nnoremap <Leader>l :set list!<CR>
 
 nnoremap <Leader>R :w<CR>:!ruby %<CR>
-" nnoremap <Leader>w :update<CR>
-" nnoremap <Leader>W :update<CR> :bd<CR>
+nnoremap <Leader>W :update<CR>
+nnoremap <Leader>w :update<CR> :bd<CR>
 
 " Testing
 set completeopt=longest,menuone,preview
@@ -216,15 +217,14 @@ let NERDTreeChDirMode=0
 
 " Set runtime path for ctrl-p
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+nnoremap <Leader>b :CtrlPBuffer<CR>
 
 nnoremap <Leader>g :GitGutterToggle<CR>
 nnoremap <Leader>[ :TagbarToggle<CR>
 
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
-let g:gitgutter_enabled = 1
-autocmd FileType eRuby setlocal sw=2 sts=2 ts=2 expandtab
-
+let g:gitgutter_enabled = 0
 
 nnoremap <Leader>e :Tabularize /=<CR>
 nnoremap <Leader>f :Tabularize /:\zs<CR>
