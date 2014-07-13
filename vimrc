@@ -6,27 +6,23 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
-Plugin 'Yggdroot/indentLine'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'briancollins/vim-jst'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'lokaltog/vim-easymotion'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mxw/vim-jsx'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'pangloss/vim-javascript'
 Plugin 'roman/golden-ratio'
-Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
@@ -210,21 +206,12 @@ nnoremap <silent> <Leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 
 " ---------------------------------------------------------
 "
 " Plugins
-" Enable NERDtree
-autocmd vimenter * if !argc() | NERDTree | endif
-nnoremap <C-n> :NERDTreeToggle<CR>
-let NERDTreeChDirMode=0
 
 " Set runtime path for ctrl-p
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 nnoremap <Leader>b :CtrlPBuffer<CR>
 
-nnoremap <Leader>g :GitGutterToggle<CR>
-nnoremap <Leader>[ :TagbarToggle<CR>
-
 let g:ctrlp_match_window = 'order:ttb,max:20'
-let g:NERDSpaceDelims=1
-let g:gitgutter_enabled = 0
 
 nnoremap <Leader>e :Tabularize /=<CR>
 nnoremap <Leader>f :Tabularize /:\zs<CR>
