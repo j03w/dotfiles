@@ -3,7 +3,6 @@
 cp ~/.zshrc zshrc
 cp ~/.vimrc vimrc
 cp ~/.gvimrc gvimrc
-cp ~/.tmux tmux
 cp ~/.slate slate
 cp ~/.gemrc gemrc
 cp ~/.railsrc railsrc
