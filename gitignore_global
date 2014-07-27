@@ -6,3 +6,4 @@
 .ruby-version
 /coverage
 chromedriver.log
+npm-debug.log
