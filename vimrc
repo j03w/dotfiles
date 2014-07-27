@@ -6,6 +6,7 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
+Plugin 'Yggdroot/indentLine'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'briancollins/vim-jst'
@@ -15,10 +16,10 @@ Plugin 'lokaltog/vim-easymotion'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mxw/vim-jsx'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'pangloss/vim-javascript'
 Plugin 'roman/golden-ratio'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
@@ -215,3 +216,9 @@ let g:ctrlp_match_window = 'order:ttb,max:20'
 
 nnoremap <Leader>e :Tabularize /=<CR>
 nnoremap <Leader>f :Tabularize /:\zs<CR>
+
+" Enable NERDtree
+autocmd vimenter * if !argc() | NERDTree | endif
+nnoremap <C-n> :NERDTreeToggle<CR>
+let NERDTreeChDirMode=0
+let g:NERDSpaceDelims=1
