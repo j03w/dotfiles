@@ -6,7 +6,7 @@ ZSH_THEME="joe"
 
 alias b='bundle exec'
 alias bi='bundle install'
-alias rsv='bin/rails server'
+alias rsv='bin/rails server --binding 127.0.0.1'
 alias rcs='bin/rails console'
 alias ms='bundle exec middleman server'
 alias mb='bundle exec middleman build --no-clean'
