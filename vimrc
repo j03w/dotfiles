@@ -18,6 +18,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mxw/vim-jsx'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'pangloss/vim-javascript'
+Plugin 'rizzatti/dash.vim'
 Plugin 'roman/golden-ratio'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
@@ -87,6 +88,10 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=lightred ctermbg=lightred guibg=#ffd9d9
+  autocmd BufEnter * match OverLength /\%81v.\+/
+augroup END
 
 
 " Restore cursor position to where it was before
