@@ -6,10 +6,6 @@ ZSH_THEME="joe"
 
 alias b='bundle exec'
 alias bi='bundle install'
-alias rsv='bin/rails server --binding 127.0.0.1'
-alias rcs='bin/rails console'
-alias ms='bundle exec middleman server'
-alias mb='bundle exec middleman build --no-clean'
 
 alias canary="open -a \"Google Chrome Canary\" --args --disable-web-security"
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
