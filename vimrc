@@ -10,6 +10,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'briancollins/vim-jst'
+Plugin 'danchoi/ri.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'lokaltog/vim-easymotion'
@@ -166,7 +167,7 @@ noremap <silent> <C-j> <C-w>j
 noremap <silent> <C-t> :tabnew<CR>
 noremap <silent> <Leader>j :tabprevious<CR>
 noremap <silent> <Leader>k :tabnext<CR>
-
+noremap <silent> <Leader>l :nohls<CR><ESC>
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 nnoremap <silent> <Leader>gv :tabnew<CR>:e ~/.gvimrc<CR>
 
@@ -199,9 +200,7 @@ nnoremap <Leader>par :%s/^>$//<CR>
 " Shortcut to rapidly toggle set list
 nnoremap <Leader>l :set list!<CR>
 
-nnoremap <Leader>R :w<CR>:!ruby %<CR>
-nnoremap <Leader>W :update<CR>
-nnoremap <Leader>w :update<CR> :bd<CR>
+nnoremap <Leader>W :update<CR> :bd<CR>
 
 " Testing
 set completeopt=longest,menuone,preview
