@@ -12,6 +12,7 @@ Plugin 'bling/vim-airline'
 Plugin 'briancollins/vim-jst'
 Plugin 'danchoi/ri.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'jgdavey/tslime.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'lokaltog/vim-easymotion'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -22,6 +23,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'rizzatti/dash.vim'
 Plugin 'roman/golden-ratio'
 Plugin 'scrooloose/nerdtree'
+Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
@@ -198,7 +200,7 @@ nnoremap : ;
 nnoremap <Leader>par :%s/^>$//<CR>
 
 " Shortcut to rapidly toggle set list
-nnoremap <Leader>l :set list!<CR>
+" nnoremap <Leader>l :set list!<CR>
 
 nnoremap <Leader>W :update<CR> :bd<CR>
 
@@ -226,3 +228,10 @@ autocmd vimenter * if !argc() | NERDTree | endif
 nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeChDirMode=0
 let g:NERDSpaceDelims=1
+
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
