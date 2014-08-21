@@ -10,7 +10,7 @@ alias bi='bundle install'
 alias canary="open -a \"Google Chrome Canary\" --args --disable-web-security"
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-alias mongodb="mongod --fork --dbpath /usr/local/var/log/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --logappend"
+alias mongodb="mongod --fork --dbpath /usr/local/var/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --logappend"
 alias gemimplode="for i in `gem list --no-versions`; do gem uninstall -aIx $i; done"
 
 DISABLE_AUTO_UPDATE="true"
