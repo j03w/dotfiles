@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<root>
+  <appdef>
+    <appname>Terminal</appname>
+    <equal>com.apple.Terminal</equal>
+    <equal>iTerm</equal>
+    <equal>net.sourceforge.iTerm</equal>
+    <equal>com.googlecode.iterm2</equal>
+  </appdef>
+  <item>
+    <name>TMUX Key Remappings</name>
+    <item>
+      <name>TMUX: Right Control to Ctrl+B</name>
+      <identifier>private.right_control_to_control_b</identifier>
+      <only>Terminal</only>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CONTROL_R,
+        KeyCode::B, ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+  </item>
+</root>
