@@ -4,9 +4,6 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="joe"
 
-alias b='bundle exec'
-alias bi='bundle install'
-
 alias canary="open -a \"Google Chrome Canary\" --args --disable-web-security"
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
@@ -17,7 +14,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git git-flow ruby rails)
+plugins=(git git-flow ruby rails bundler)
 
 source $ZSH/oh-my-zsh.sh
 
