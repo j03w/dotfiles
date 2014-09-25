@@ -224,7 +224,7 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 let g:ctrlp_match_window = 'order:ttb,max:20'
 
 nnoremap <Leader>e :Tabularize /=<CR>
-nnoremap <Leader>f :Tabularize /|<CR>
+nnoremap <Leader>f :Tabularize /\|<CR>
 
 " Enable NERDtree
 autocmd vimenter * if !argc() | NERDTree | endif
