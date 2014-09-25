@@ -195,6 +195,10 @@ map n nzz
 nnoremap ; :
 nnoremap : ;
 
+" http://vim.wikia.com/wiki/Moving_lines_up_or_down
+nnoremap <D-J> :m .+1<CR>==
+nnoremap <D-K> :m .-2<CR>==
+
 " Fix email paragraphs
 nnoremap <Leader>par :%s/^>$//<CR>
 
@@ -220,7 +224,7 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 let g:ctrlp_match_window = 'order:ttb,max:20'
 
 nnoremap <Leader>e :Tabularize /=<CR>
-nnoremap <Leader>f :Tabularize /:\zs<CR>
+nnoremap <Leader>f :Tabularize /|<CR>
 
 " Enable NERDtree
 autocmd vimenter * if !argc() | NERDTree | endif
