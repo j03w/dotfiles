@@ -20,7 +20,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rizzatti/dash.vim'
-Plugin 'roman/golden-ratio'
+" Plugin 'roman/golden-ratio'
 Plugin 'scrooloose/nerdtree'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
@@ -228,7 +228,8 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeChDirMode=0
 let g:NERDSpaceDelims=1
 
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+" let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_runner = 'os_x_iterm'
 
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
