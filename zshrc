@@ -10,6 +10,8 @@ alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias mongodb="mongod --fork --dbpath /usr/local/var/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --logappend"
 alias gemimplode="for i in `gem list --no-versions`; do gem uninstall -aIx $i; done"
 
+alias rsp="rails server --binding 127.0.0.1"
+
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
