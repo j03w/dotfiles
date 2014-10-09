@@ -63,15 +63,16 @@ set listchars=tab:▸\ ,trail:▫
 set splitbelow
 set splitright
 
+colorscheme default
+
 let &colorcolumn=join(range(81,999),",")
-highlight ColorColumn ctermbg=7 guibg=#cccccc
+highlight ColorColumn guibg=#efefef ctermbg=7
 
 if version >= 700
    set spl=en spell
    set nospell
 endif
 
-colorscheme default
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 if has("autocmd")
