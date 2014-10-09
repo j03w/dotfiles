@@ -20,7 +20,6 @@ Plugin 'mxw/vim-jsx'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rizzatti/dash.vim'
-" Plugin 'roman/golden-ratio'
 Plugin 'scrooloose/nerdtree'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
@@ -61,6 +60,8 @@ set laststatus=2
 set list
 set listchars=tab:▸\ ,trail:▫
 
+set splitbelow
+set splitright
 
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=7 guibg=#cccccc
@@ -85,15 +86,6 @@ if has("autocmd")
   " Remove any trailing whitespace that is in the file
   autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 endif
-
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
 
 " Restore cursor position to where it was before
 augroup JumpCursorOnEdit
@@ -124,41 +116,7 @@ augroup END
 let g:Tex_DefaultTargetFormat = "pdf"
 let g:Tex_ViewRule_pdf = "kpdf"
 
-" Don't know what this is for...
-set grepprg=grep\ -nH\ $*
-"
-" ---------------------------------------------------------
-"
-" Functions
-" Open URL in browser
-function! Browser ()
-   let line = getline (".")
-   let line = matchstr (line, "http[^   ]*")
-   exec "!konqueror ".line
-endfunction
-
-" Paste Toggle
-let paste_mode = 0 " 0 = normal, 1 = paste
-
-func! Paste_on_off()
-   if g:paste_mode == 0
-      set paste
-      let g:paste_mode = 1
-   else
-      set nopaste
-      let g:paste_mode = 0
-   endif
-   return
-endfunc
-"
-" ---------------------------------------------------------
-"
 " Key Mappings
-" map <Leader>w :call Browser ()<CR>                          " Open Url on this line with the browser \w
-nnoremap <silent> <F10> :call Paste_on_off()<CR>
-set pastetoggle=<F10>
-nnoremap <silent> <F9> :%s/$//g<CR>:%s// /g<CR>             " for DOS apparently
-
 :imap ;; <Esc>
 noremap <silent> <C-l> <C-w>l
 noremap <silent> <C-h> <C-w>h
@@ -198,12 +156,6 @@ nnoremap : ;
 nnoremap <D-J> :m .+1<CR>==
 nnoremap <D-K> :m .-2<CR>==
 
-" Fix email paragraphs
-nnoremap <Leader>par :%s/^>$//<CR>
-
-" Shortcut to rapidly toggle set list
-" nnoremap <Leader>l :set list!<CR>
-
 nnoremap <Leader>W :update<CR> :bd<CR>
 
 " Testing
@@ -211,9 +163,8 @@ set completeopt=longest,menuone,preview
 
 " Reload .vimrc
 nnoremap <silent> <Leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-"
-" ---------------------------------------------------------
-"
+
+
 " Plugins
 
 " Set runtime path for ctrl-p
