@@ -61,6 +61,10 @@ set laststatus=2
 set list
 set listchars=tab:▸\ ,trail:▫
 
+
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=7 guibg=#cccccc
+
 if version >= 700
    set spl=en spell
    set nospell
@@ -89,11 +93,6 @@ else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
-
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=lightred ctermbg=lightred guibg=#ffd9d9
-  autocmd BufEnter * match OverLength /\%81v.\+/
-augroup END
 
 
 " Restore cursor position to where it was before
