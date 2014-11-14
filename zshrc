@@ -22,7 +22,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PGDATA="/usr/local/var/postgres"
 export PATH="/usr/local/heroku/bin:/usr/local/sbin:$PATH"
-export PATH=${PATH}:/Developer/adt-bundle/sdk/platform-tools:/Developer/adt-bundle/sdk/tools
+export PATH="${PATH}:/Applications/Android Studio.app/sdk/tools"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export EDITOR='vim'
