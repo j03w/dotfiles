@@ -20,7 +20,6 @@ Plugin 'mxw/vim-jsx'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rizzatti/dash.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
@@ -29,6 +28,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
@@ -177,13 +177,7 @@ let g:ctrlp_match_window = 'order:ttb,max:20'
 nnoremap <Leader>e :Tabularize /=<CR>
 nnoremap <Leader>f :Tabularize /\|<CR>
 
-" Enable NERDtree
-autocmd vimenter * if !argc() | NERDTree | endif
-nnoremap <C-n> :NERDTreeToggle<CR>
-let NERDTreeChDirMode=0
-let g:NERDSpaceDelims=1
-
-" let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+" let g:netrw_liststyle=3
 let g:rspec_runner = 'os_x_iterm'
 
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
