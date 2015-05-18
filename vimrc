@@ -6,6 +6,7 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
@@ -14,6 +15,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'jgdavey/tslime.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'lokaltog/vim-easymotion'
+Plugin 'marijnh/tern_for_vim'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mxw/vim-jsx'
@@ -173,6 +175,11 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 nnoremap <Leader>b :CtrlPBuffer<CR>
 
 let g:ctrlp_match_window = 'order:ttb,max:20'
+
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/](node_modules|build|log)$',
+      \ 'file': '\v\.(exe|so|dll|DS_Store)$'
+      \ }
 
 nnoremap <Leader>e :Tabularize /=<CR>
 nnoremap <Leader>f :Tabularize /\|<CR>

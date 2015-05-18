@@ -11,6 +11,7 @@ alias mongodb="mongod --fork --dbpath /usr/local/var/mongodb --logpath /usr/loca
 alias gemimplode="for i in `gem list --no-versions`; do gem uninstall -aIx $i; done"
 alias rsp="rails server --binding 127.0.0.1"
 alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
+alias julia="/Applications/Julia-0.3.2.app/Contents/Resources/julia/bin/julia"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
