@@ -12,6 +12,8 @@ alias gemimplode="for i in `gem list --no-versions`; do gem uninstall -aIx $i; d
 alias rsp="rails server --binding 127.0.0.1"
 alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
 alias julia="/Applications/Julia-0.3.2.app/Contents/Resources/julia/bin/julia"
+alias du1="du -d1 -h"
+alias ipyt="~/anaconda/bin/ipython qtconsole"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -34,3 +36,6 @@ function npmls() {
 }
 
 export PG_USER=postgres
+
+# https://gist.github.com/TheFox/adf1c97916ea0e2d5083
+alias gitclearcache='git -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc "$@"'

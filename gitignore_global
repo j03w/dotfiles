@@ -10,3 +10,6 @@ npm-debug.log
 .elasticbeanstalk
 Note.md
 node_modules
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
