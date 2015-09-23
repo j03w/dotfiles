@@ -14,6 +14,10 @@ alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/C
 alias julia="/Applications/Julia-0.3.2.app/Contents/Resources/julia/bin/julia"
 alias du1="du -d1 -h"
 alias ipyt="~/anaconda/bin/ipython qtconsole"
+alias tb="tar -jcvf"
+alias tg="tar -zcvf"
+alias utb="tar -zxvf"
+alias utg="tar -jxvf"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
