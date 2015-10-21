@@ -6,18 +6,16 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'marijnh/tern_for_vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
-Plugin 'briancollins/vim-jst'
 Plugin 'godlygeek/tabular'
-Plugin 'jgdavey/tslime.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'lokaltog/vim-easymotion'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mxw/vim-jsx'
@@ -34,6 +32,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
+
 
 call vundle#end()
 
@@ -86,6 +85,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.rss set filetype=xml
   autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.json set ft=javascript
   autocmd BufNewFile,BufRead *.ejs so $HOME/.vim/bundle/jst.vim
 
   " Remove any trailing whitespace that is in the file
@@ -187,7 +187,7 @@ nnoremap <Leader>e :Tabularize /=<CR>
 nnoremap <Leader>f :Tabularize /\|<CR>
 
 " let g:netrw_liststyle=3
-let g:rspec_runner = 'os_x_iterm'
+let g:rspec_runner = 'os_x_iterm2'
 
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
