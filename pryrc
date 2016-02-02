@@ -1,6 +1,6 @@
 # https://github.com/pry/pry/wiki/FAQ
 
-require "rubygems"
+require 'rubygems'
 require 'awesome_print'
 
 AwesomePrint.pry!

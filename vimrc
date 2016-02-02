@@ -133,6 +133,7 @@ noremap <silent> <Leader>k :tabnext<CR>
 noremap <silent> <Leader>l :nohls<CR><ESC>
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 nnoremap <silent> <Leader>gv :tabnew<CR>:e ~/.gvimrc<CR>
+nnoremap <silent> <Leader>cc :copen<CR>
 
 " Up and down are more logical with g..
 nnoremap <silent> k gk
@@ -177,7 +178,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 nnoremap <Leader>b :CtrlPBuffer<CR>
 
 let g:ctrlp_match_window = 'order:ttb,max:20'
-
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/](node_modules|build|log)$',
       \ 'file': '\v\.(exe|so|dll|DS_Store)$'
@@ -185,11 +186,27 @@ let g:ctrlp_custom_ignore = {
 
 nnoremap <Leader>e :Tabularize /=<CR>
 nnoremap <Leader>f :Tabularize /\|<CR>
+nnoremap <Leader>: :Tabularize /\:<CR>
 
 " let g:netrw_liststyle=3
 let g:rspec_runner = 'os_x_iterm2'
+
+" let g:rspec_command = 'be rspec {spec}'
 
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>a :call RunAllSpecs()<CR>
+
+set guifont=Menlo:h12
+set guitablabel=%t
+set guioptions-=T
+set guioptions-=m
+set guioptions-=r
+set guioptions-=l
+set guioptions-=L
+set guioptions+=c
+set vb
+
+colorscheme solarized
+set background=light

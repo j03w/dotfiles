@@ -1,4 +1,4 @@
-eval "$(rbenv init - zsh --no-rehash)"
+eval "$(rbenv init - --no-rehash zsh)"
 
 ZSH=$HOME/.oh-my-zsh
 
