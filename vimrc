@@ -6,12 +6,11 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'marijnh/tern_for_vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
+Plugin 'isRuslan/vim-es6'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'leafgarland/typescript-vim'
@@ -27,13 +26,12 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
-
-
 call vundle#end()
 
 filetype on
@@ -68,7 +66,7 @@ set splitright
 
 colorscheme default
 
-let &colorcolumn=join(range(81,999),",")
+let &colorcolumn=join(range(95,999),",")
 highlight ColorColumn guibg=#efefef ctermbg=7
 
 if version >= 700
@@ -81,12 +79,16 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 if has("autocmd")
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType go setlocal ts=2 sts=2 sw=2 noexpandtab
+  autocmd FileType xml setlocal ts=4 sts=4 sw=4 noexpandtab
 
   autocmd BufNewFile,BufRead *.rss set filetype=xml
-  autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd BufNewFile,BufRead *.json set ft=javascript
-  autocmd BufNewFile,BufRead *.ejs so $HOME/.vim/bundle/jst.vim
+  autocmd BufNewFile,BufRead *.es6 set ft=javascript
+
+  " automatically open quickfix window after grep or Ggrep
+  autocmd QuickFixCmdPost *grep* cwindow
 
   " Remove any trailing whitespace that is in the file
   autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -134,6 +136,7 @@ noremap <silent> <Leader>l :nohls<CR><ESC>
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 nnoremap <silent> <Leader>gv :tabnew<CR>:e ~/.gvimrc<CR>
 nnoremap <silent> <Leader>cc :copen<CR>
+nnoremap <silent> <Leader>cl :ccl<CR>
 
 " Up and down are more logical with g..
 nnoremap <silent> k gk
@@ -146,9 +149,6 @@ nnoremap <silent> <End> a <Esc>r
 
 nnoremap <silent> <Leader>o o<Esc>
 nnoremap <silent> <Leader>O O<Esc>
-
-
-nnoremap <silent> <Leader>c :noh
 
 nnoremap <space> za
 
@@ -191,22 +191,7 @@ nnoremap <Leader>: :Tabularize /\:<CR>
 " let g:netrw_liststyle=3
 let g:rspec_runner = 'os_x_iterm2'
 
-" let g:rspec_command = 'be rspec {spec}'
-
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>a :call RunAllSpecs()<CR>
-
-set guifont=Menlo:h12
-set guitablabel=%t
-set guioptions-=T
-set guioptions-=m
-set guioptions-=r
-set guioptions-=l
-set guioptions-=L
-set guioptions+=c
-set vb
-
-colorscheme solarized
-set background=light

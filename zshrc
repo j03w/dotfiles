@@ -1,36 +1,36 @@
+export PATH=$HOME/.rbenv/bin:$HOME/bin:/usr/local/bin:$PATH
 eval "$(rbenv init - --no-rehash zsh)"
 
 ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="joe"
 
-alias canary="open -a \"Google Chrome Canary\" --args --disable-web-security"
-alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+alias pg_start="pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/server.log start"
+alias pg_stop="pg_ctl -D /usr/local/pgsql/data stop -s -m fast"
 alias mongodb="mongod --fork --dbpath /usr/local/var/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --logappend"
 alias gemimplode="for i in `gem list --no-versions`; do gem uninstall -aIx $i; done"
-alias rsl="rails server --binding 127.0.0.1"
 alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
-alias julia="/Applications/Julia-0.3.2.app/Contents/Resources/julia/bin/julia"
 alias du1="du -d1 -h"
-alias ipyt="~/anaconda/bin/ipython qtconsole"
 alias tb="tar -jcvf"
 alias tg="tar -zcvf"
 alias utb="tar -zxvf"
 alias utg="tar -jxvf"
+alias ll="ls -alh"
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git git-flow ruby rails bundler)
+plugins=(git ruby rails bundler)
 
 source $ZSH/oh-my-zsh.sh
 
 export PGDATA="/usr/local/var/postgres"
 export PATH="/usr/local/heroku/bin:/usr/local/sbin:$PATH"
+export PATH="${PATH}:/usr/local/opt/python/libexec/bin"
 export PATH="${PATH}:/Applications/Android Studio.app/sdk/tools"
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$PATH:/usr/local/opt/mysql@5.6/bin"
+export EC2_SSH_KEY_PATH="/Users/joe/.ssh/amaysim-joewongchanglor.pem"
 
 export EDITOR='vim'
 

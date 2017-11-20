@@ -1,11 +1,14 @@
 # https://github.com/pry/pry/wiki/FAQ
 
 require 'rubygems'
-require 'awesome_print'
 
-AwesomePrint.pry!
+begin
+  require 'awesome_print'
+  AwesomePrint.pry!
+rescue LoadError
+end
 
-if defined?(PryByebug)
+if defined?(Pry) && defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'
   Pry.commands.alias_command 's', 'step'
   Pry.commands.alias_command 'n', 'next'
