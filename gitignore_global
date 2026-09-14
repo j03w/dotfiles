@@ -18,3 +18,10 @@ node_modules
 .envfile
 envfile.*
 yarn-error.log
+*.private.md
+*.local
+
+**/.claude/settings.local.json
+.envrc
+
+**/.claude/.cc-writes/
